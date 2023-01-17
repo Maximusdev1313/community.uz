@@ -18,11 +18,13 @@
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- drawer content -->
+      
       <LeftDrawerContent/>
     </q-drawer>
 
     <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
       <!-- drawer content -->
+      <RightDrawerContent/>
     </q-drawer>
 
     <q-page-container>
@@ -35,6 +37,7 @@
 <script setup>
 import { ref } from 'vue'
 import LeftDrawerContent from 'src/components/leftDrawerContent.vue'
+import RightDrawerContent from 'src/components/rightDrawerContent.vue';
 const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
    const toggleLeftDrawer = ()=>{
