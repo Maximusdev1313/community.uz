@@ -3,7 +3,7 @@
 
     <q-header reveal elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <q-btn dense flat round icon="menu" class="lt-md" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
           <q-avatar>
@@ -12,7 +12,7 @@
           Title
         </q-toolbar-title>
 
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+        <q-btn dense flat round icon="menu" class="lt-md" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
@@ -24,7 +24,8 @@
 
     <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
       <!-- drawer content -->
-      <RightDrawerContent/>
+      <right-drawer-content/>
+      <question-list/>
     </q-drawer>
 
     <q-page-container>
@@ -38,6 +39,7 @@
 import { ref } from 'vue'
 import LeftDrawerContent from 'src/components/leftDrawerContent.vue'
 import RightDrawerContent from 'src/components/rightDrawerContent.vue';
+import questionList from 'src/components/questionList.vue';
 const leftDrawerOpen = ref(false);
     const rightDrawerOpen = ref(false);
    const toggleLeftDrawer = ()=>{
