@@ -4,46 +4,32 @@
       </div>
         <q-scroll-area style="height: calc(100% - 150px);  border-right: 1px solid #ddd">
           <q-list padding>
-            <q-item clickable v-ripple>
+            <q-item
+              clickable
+              v-ripple
+              :active="category.label"
+              v-for="category in store.categoryApi"
+              :key="category"
+              :to="'/category/' + category.id"
+              >
               <q-item-section avatar>
-                <q-icon name="inbox" />
+                <q-icon :name="category.icon" />
               </q-item-section>
 
               <q-item-section>
-                Inbox
+                {{ category.category_name }}
               </q-item-section>
             </q-item>
 
-            <q-item active clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
-
-              <q-item-section>
-                Star
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="send" />
-              </q-item-section>
-
-              <q-item-section>
-                Send
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
-
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
+            
           </q-list>
         </q-scroll-area>
        
 </template>
+
+<script setup>
+import { useApiStore } from 'src/stores';
+
+const store = useApiStore()
+
+</script>
