@@ -1,19 +1,19 @@
 <template>
   <q-page  >
     <div class="wrapper">
-      <InputForWriteMassage/>
-      <QuestionList/>
+      <!-- <InputForWriteMassage/>
+      <QuestionList/> -->
     </div>
   </q-page>
 </template>
 
-<script>
+<script setup>
 import InputForWriteMassage from 'src/components/inputForWriteMassage.vue';
 import QuestionList from 'src/components/questionList.vue';
 import { defineComponent } from 'vue'
+import {useApiStore} from 'src/stores/index'
+const store = useApiStore()
+store.GetCategoryApi()
 
-export default defineComponent({
-    name: "IndexPage",
-    components: { InputForWriteMassage, QuestionList }
-})
+
 </script>
