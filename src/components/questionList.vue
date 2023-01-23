@@ -5,19 +5,19 @@
       :bar-style="barStyle"
       :thumb-style="thumbStyle"
     >
-      <q-list class="q-mt-sm" v-for="q in 20" :key="q">
-        <q-item clickable>
+      <q-list class="q-mt-sm" v-for="q in questions" :key="q">
+        <q-item clickable :to="'/comment/' + q.id">
           <q-item-section>
-            <q-item-label>THis is title</q-item-label>
+            <q-item-label class="item-label" lines="1">{{q.title}} </q-item-label> 
             <q-item-label caption lines="2"
-              >Secondary line text. Lorem ipsum dolor sit amet, consectetur
-              adipiscit elit.</q-item-label
+              >{{ q.question }}</q-item-label
             >
           </q-item-section>
 
           <q-item-section side top>
-            <q-item-label caption>5 min ago</q-item-label>
-            <q-icon name="star" color="yellow" />
+            <q-item-label caption>{{ moment(q.timestamp).format('lll') }}</q-item-label>
+            <q-item-label caption v-if="q.answer.length"> {{ q.answer.length }} answers </q-item-label>
+            <q-item-label caption v-if="!q.answer.length"> No answers yet </q-item-label>
           </q-item-section>
         </q-item>
 
@@ -28,7 +28,7 @@
 </template>
 <script setup>
 import { ref, toRefs } from "vue";
-
+import moment from 'moment'
 const props = defineProps({
   questions: Array,
   height: Number,
@@ -36,7 +36,6 @@ const props = defineProps({
 
 const { questions} = toRefs(props);
 
-console.log(questions);
 const thumbStyle = {
   right: "4px",
   borderRadius: "5px",
@@ -52,4 +51,11 @@ const barStyle = {
   width: "9px",
   opacity: 0.2,
 };
+
 </script>
+
+<style scoped>
+.item-label{
+  width: 200px;
+}
+</style>
