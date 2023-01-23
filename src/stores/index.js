@@ -5,31 +5,54 @@ import axios from 'axios'
 export const useApiStore = defineStore('store', {
   state: () => ({
     categoryApi: [],
-    questions: []
+    lists: [],
+    question: {},
+    comments:{},
   }),
+
   actions: {
     async GetCategoryApi() {
       try {
         const Fetch_Api = await axios.get('http://maxmaximusdev.pythonanywhere.com/category/')
         this.categoryApi = Fetch_Api.data
-        console.log(this.categoryApi);
+        console.log('categoryApi', this.categoryApi.length);
       } catch (error) {
         console.log(error.message);
       }
     },
-    async GetQuestion(id) {
+    async GetApiById( id ) {
+      
       try {
         const Fetch_Api = await axios.get(`http://maxmaximusdev.pythonanywhere.com/category/${id}`)
         const category = Fetch_Api.data
         console.log('from category', category);
-        this.questions = category.questions
-        console.log('from pinia ', this.questions);
+        this.lists =  category.questions
+        
       } catch (error) {
-        console.log(error.message);
+        console.log( 'error', error.message);
 
       }
+    },
+
+    async GetComments(id){
+      try {
+        const api = await axios.get(`http://maxmaximusdev.pythonanywhere.com/questions/${id}`)
+        this.question = api.data
+        console.log('question',this.question);
+        this.comments = this.question.answer 
+        console.log('comment',this.comments);
+      } catch (error) {
+        console.log(error.message);
+      }
+
     }
-  }
+  },
+  getters:{
+     reverseLists: (state) =>{
+       return state.lists.reverse()
+     }
+   }, 
+
 
 
 
@@ -54,3 +77,5 @@ export default store((/* { ssrContext } */) => {
 
   return pinia
 })
+
+
