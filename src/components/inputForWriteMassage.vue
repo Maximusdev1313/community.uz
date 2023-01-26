@@ -11,15 +11,18 @@
       </div>
       <div class="input">
         <div class="input__field">
-          <q-input autogrow label="Question" class="cursor-pointer">
-            <template v-slot:append>
-              <q-icon name="cloud_upload" />
-            </template>
-          </q-input>
+
+
+          <q-editor v-model="editor"/>
+
+
+
         </div>
       </div>
 
       <q-btn class="q-my-md">Ready</q-btn>
+
+      <div v-html="editor"></div>
     </div>
     <q-separator></q-separator>
   </div>
@@ -28,6 +31,7 @@
 <script setup>
 import { ref } from "vue";
 let text = ref("");
+let editor = ref('')
 </script>
 
 <style scoped></style>
