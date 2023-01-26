@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <input-for-write-massage/> -->
+    <input-for-write-massage/>
     <div class="container q-pa-md text-subtitle1">
       Questions List 
     </div>
