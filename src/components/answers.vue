@@ -1,16 +1,23 @@
 <template>
   <div class="q-mt-md">
     <article>
-      <div class="text-h6">Answers</div>
-      <div v-for="n in 19 " :key="n">
+      <div class="row justify-between">
+        <div class="title">Answers</div>
+          <q-btn
+            color="primary"
+            :label="clicking ? 'fikr bildirish': 'bekor qilish '"
+            :icon-right="clicking ? 'comment' : 'cancel'"
+            @click="clicking = !clicking"
+            size="sm" />  
+          <!-- <q-btn color="primary" label="bekor qilish" icon-right="cancel" size="sm" @click=""/> -->
+      </div>
+<input-for-comments :id="route.params.id"/>
+      <div v-for="comment in store.comments " :key="comment">
         <div class="row justify-between no-wrap q-mt-md">
           <main class="content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod neque
-            beatae, libero a, ut, quia accusamus facilis doloremque dicta
-            corrupti soluta eveniet maiores et maxime. Quos repellat accusamus
-            modi qui.
+            {{ comment.comment }}
           </main>
-          <aside>
+          <!-- <aside>
             <q-btn
               round
               color="white"
@@ -24,11 +31,11 @@
             >
               99
             </div>
-          </aside>
+          </aside> -->
         </div>
-        <div class="row justify-between q-mt-md">
-          <address>Author</address>
-          <time>33-sentabr</time>
+        <div class="row justify-between q-mt-md parts">
+          <address>{{ comment.user_name }}</address>
+          <time>{{ moment(comment.timestamp).format('lll') }}</time>
         </div>
         <q-separator class="q-mt-md"/>
 
@@ -36,7 +43,16 @@
     </article>
   </div>
 </template>
-
+<script setup>
+import {ref, } from 'vue'
+import { useRoute } from 'vue-router';
+import { useApiStore } from 'src/stores';
+import moment from 'moment';
+import inputForComments from './inputForComments.vue';
+  const store = useApiStore()
+  const route = useRoute()
+  let clicking = ref(true)
+</script>
 <style scoped>
 .content {
   width: 90%;
