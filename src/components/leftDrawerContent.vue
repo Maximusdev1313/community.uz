@@ -1,5 +1,5 @@
 <template>
-  <div class="text-h5 q-ml-md q-mt-md">Categories</div>
+  <div class="title  q-ml-md q-mt-md">Categories</div>
   <q-scroll-area
     style="height: calc(100% - 150px); border-right: 1px solid #ddd"
   >
