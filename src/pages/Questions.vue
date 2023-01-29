@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input-for-write-massage/>
-    <div class="container q-pa-md text-subtitle1">
+    <input-for-write-massage :id="route.params.id"/>
+    <div class="container q-pa-md title">
       Questions List 
     </div>
     <Suspense>
