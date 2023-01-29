@@ -9,7 +9,7 @@
         <div>@rstoenescu</div>
       </div>
     </q-img>
-    <div class="container q-pa-md text-subtitle1">Your Questions</div>
+    <div class="container q-pa-md title">Your Questions</div>
     <question-list :height="height" />
   </div>
 </template>
