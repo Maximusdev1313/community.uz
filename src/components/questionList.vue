@@ -10,7 +10,8 @@
           <q-item-section>
             <q-item-label class="item-label" lines="1">{{q.title}} </q-item-label> 
             <q-item-label caption lines="2"
-              >{{ q.question }}</q-item-label
+            v-html="q.question"  
+            ></q-item-label
             >
           </q-item-section>
 
@@ -55,6 +56,9 @@ const barStyle = {
 </script>
 
 <style scoped>
+div.q-scrollarea__content.absolute{
+  position: relative;
+}
 .item-label{
   width: 200px;
 }
