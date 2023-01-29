@@ -2,6 +2,7 @@
 
 Start with masters
 
+This chat for Uzbek community ...
 ## Install the dependencies
 ```bash
 yarn
