@@ -5,8 +5,8 @@
     </div> -->
     <form class=" ">
       <div>
-        <q-input label="Your name" class="q-py-sm" v-model="userName" />
-        <q-input label="Title for question" v-model="title" />
+        <q-input label="Ismingiz" class="q-py-sm" v-model="userName" />
+        <q-input label="Savol uchun sarlavha" placeholder="M: Event loop qanday ishlaydi..." v-model="title" />
       </div>
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef" />

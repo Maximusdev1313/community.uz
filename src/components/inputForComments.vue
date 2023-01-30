@@ -2,7 +2,7 @@
   <div class="container">
     <form class=" ">
       <div>
-        <q-input label="Your name" class="q-py-sm" v-model="userName" />
+        <q-input label="Ismingiz" class="q-py-sm" v-model="userName" />
       </div>
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef" />
