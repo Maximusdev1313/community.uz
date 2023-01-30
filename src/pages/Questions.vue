@@ -44,8 +44,7 @@ watch(
     (route =
       route <= store.categoryApi.length
         ? store.GetApiById(route)
-        : console.log(route, "false", store.categoryApi.length)),
-  console.log(route, "ques page")
+        : route),
 );
 // this variable gives dynamic height size for questions list
 const height = ref(500);
