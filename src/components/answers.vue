@@ -14,8 +14,8 @@
 <input-for-comments :id="route.params.id" v-if="store.clickerForComments "/>
       <div v-for="comment in store.comments " :key="comment">
         <div class="row justify-between no-wrap q-mt-md">
-          <main class="content">
-            {{ comment.comment }}
+          <main class="content" v-html="comment.comment">
+            <!-- {{ comment.comment }} -->
           </main>
           <!-- <aside>
             <q-btn
