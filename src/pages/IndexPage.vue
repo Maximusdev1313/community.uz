@@ -3,6 +3,9 @@
     <div class="wrapper">
       <!-- <InputForWriteMassage/>
       <QuestionList/> -->
+      <div class="row justify-center align-center text-h5">
+        Main page
+      </div>
     </div>
   </q-page>
 </template>

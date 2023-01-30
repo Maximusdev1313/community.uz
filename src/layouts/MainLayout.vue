@@ -13,9 +13,9 @@
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
+            <img src="src/assets/logo.png" />
           </q-avatar>
-          Title
+          Community
         </q-toolbar-title>
 
         <q-btn

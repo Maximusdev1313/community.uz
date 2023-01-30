@@ -2,7 +2,7 @@
   <div class="q-mt-md">
     <article>
       <div class="row justify-between">
-        <div class="title">Answers</div>
+        <div class="title">Javoblar</div>
         <q-btn
           color="primary"
           :label="store.clickerForComments ? 'bekor qilish' : 'Fikr bildirish '"

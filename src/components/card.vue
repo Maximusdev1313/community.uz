@@ -15,7 +15,7 @@
       </div>
       <div class="row justify-between q-my-md parts">
         <address class="text-capitalize">
-          author: {{ store.question.name }}
+          muallif: {{ store.question.name }}
         </address>
         <time class="row justify-end">{{
           moment(store.question.timestamp).format("lll")

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container q-pt-md title row justify-between">
-      Questions List 
+      Savollar ro'yxati
       <q-btn
             color="primary"
             :label="store.clicker ? 'bekor qilish': 'Savol berish '"
