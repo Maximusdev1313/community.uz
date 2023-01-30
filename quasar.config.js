@@ -13,6 +13,11 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (ctx) {
   return {
+    //for access control cors-headers
+    headers: {
+      'Cache-Control': null,
+      'X-Requested-With': null,
+    },
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
     supportTS: false,
 
