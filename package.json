@@ -6,7 +6,8 @@
   "author": "maximusteam <maximusdev1313@gmail.com>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
