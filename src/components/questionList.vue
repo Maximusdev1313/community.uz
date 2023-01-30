@@ -15,10 +15,10 @@
               moment(q.timestamp).format("lll")
             }}</q-item-label>
             <q-item-label caption v-if="q.answer.length">
-              {{ q.answer.length }} answers
+              {{ q.answer.length }} ta javob
             </q-item-label>
             <q-item-label caption v-if="!q.answer.length">
-              No answers yet
+              Hali javoblar yo'q
             </q-item-label>
           </q-item-section>
         </q-item>

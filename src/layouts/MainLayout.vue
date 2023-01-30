@@ -13,7 +13,7 @@
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="src/assets/logo.png" />
+            <img src="../assets/logo.png" />
           </q-avatar>
           Community
         </q-toolbar-title>
