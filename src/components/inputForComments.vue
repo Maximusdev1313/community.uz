@@ -1,20 +1,25 @@
 <template>
+
   <div class="container">
+    
     <form class=" ">
+
       <div>
         <q-input label="Your name" class="q-py-sm" v-model="userName" />
       </div>
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef" />
       </div>
-      <q-btn class="q-my-md" @click="addQuestion">Ready</q-btn>
+      <q-btn class="q-my-md" @click="addComment" color="primary" size="sm">Tayyor</q-btn>
     </form>
     <q-separator></q-separator>
   </div>
 </template>
 
 <script setup>
+import { useApiStore } from "src/stores/index";
 import { ref, toRefs } from "vue";
+const store = useApiStore()
 let userName = ref("");
 let title = ref("");
 let editor = ref("");
@@ -48,7 +53,7 @@ const date = new Date().getTime();
 const random = Math.floor(Math.random() * 10000);
 const special_id = random.toString() + date + random.toString();
 
-const addQuestion = async () => {
+const addComment = async () => {
   try {
     await fetch("http://maxmaximusdev.pythonanywhere.com/comment/", {
       method: "POST",
@@ -64,6 +69,8 @@ const addQuestion = async () => {
   } catch (error) {
     console.log(error.message);
   }
+  store.clickerForComments = false
+  store.GetComments(id.value)
 };
 </script>
 

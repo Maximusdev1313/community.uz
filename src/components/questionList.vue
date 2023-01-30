@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <q-scroll-area
+    <div
       :style="{ height: height + 'px' }"
-      :bar-style="barStyle"
-      :thumb-style="thumbStyle"
+      
     >
       <q-list class="q-mt-sm" v-for="q in questions" :key="q">
         <q-item clickable :to="'/comment/' + q.id">
@@ -24,7 +23,7 @@
 
         <q-separator spaced inset />
       </q-list>
-    </q-scroll-area>
+    </div>
   </div>
 </template>
 <script setup>
@@ -56,9 +55,10 @@ const barStyle = {
 </script>
 
 <style scoped>
-div.q-scrollarea__content.absolute{
+/* div.q-scrollarea__content.absolute{
   position: relative;
-}
+} */
+
 .item-label{
   width: 200px;
 }

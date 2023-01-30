@@ -8,6 +8,8 @@ export const useApiStore = defineStore('store', {
     lists: [],
     question: {},
     comments:{},
+    clicker: false,
+    clickerForComments: false
   }),
 
   actions: {
@@ -49,8 +51,10 @@ export const useApiStore = defineStore('store', {
   },
   getters:{
      reverseLists: (state) =>{
+    
        return state.lists.reverse()
-     }
+     },
+   
    }, 
 
 

@@ -5,14 +5,14 @@
         <div class="title">Answers</div>
           <q-btn
             color="primary"
-            :label="clicking ? 'fikr bildirish': 'bekor qilish '"
-            :icon-right="clicking ? 'comment' : 'cancel'"
-            @click="clicking = !clicking"
+            :label="store.clickerForComments ? 'bekor qilish': 'Fikr bildirish '"
+            :icon-right="store.clickerForComments ? 'cancel' : 'comment'"
+            @click="store.clickerForComments = !store.clickerForComments"
             size="sm" />  
           <!-- <q-btn color="primary" label="bekor qilish" icon-right="cancel" size="sm" @click=""/> -->
       </div>
-<input-for-comments :id="route.params.id"/>
-      <div v-for="comment in store.comments " :key="comment">
+<input-for-comments :id="route.params.id" v-if="store.clickerForComments "/>
+      <div v-for="comment in store.reverseComments " :key="comment">
         <div class="row justify-between no-wrap q-mt-md">
           <main class="content">
             {{ comment.comment }}
@@ -51,7 +51,7 @@ import moment from 'moment';
 import inputForComments from './inputForComments.vue';
   const store = useApiStore()
   const route = useRoute()
-  let clicking = ref(true)
+  let clicking = ref(false)
 </script>
 <style scoped>
 .content {

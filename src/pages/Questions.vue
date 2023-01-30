@@ -1,9 +1,16 @@
 <template>
   <div>
-    <input-for-write-massage :id="route.params.id"/>
-    <div class="container q-pa-md title">
+    <div class="container q-pt-md title row justify-between">
       Questions List 
+      <q-btn
+            color="primary"
+            :label="store.clicker ? 'bekor qilish': 'Savol berish '"
+            :icon-right="store.clicker ? 'cancel' : 'comment'"
+            @click="store.clicker = !store.clicker"
+            size="sm" />  
     </div>
+    <input-for-write-massage :id="route.params.id" v-if="store.clicker"/>
+
     <Suspense>
       <question-list :questions="store.reverseLists" :height="height" />
     </Suspense>
@@ -16,6 +23,7 @@ import { useApiStore } from "src/stores/index";
 import { ref, watch, onMounted, computed } from "vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
+const questionOpen = ref(false)
 const route = useRoute();
 
 const store = useApiStore();

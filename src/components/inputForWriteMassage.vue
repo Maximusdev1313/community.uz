@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <div class="title">
+    <!-- <div class="title">
       Please write your question
-    </div>
-
+    </div> -->
+{{ store.clicker }}
     <form class=" ">
       <div>
         <q-input label="Your name" class="q-py-sm" v-model="userName"/>
@@ -12,7 +12,7 @@
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef"/>
       </div>
-      <q-btn class="q-my-md" @click="addQuestion">Ready</q-btn>
+      <q-btn class="q-my-md" @click="addQuestion" color="primary" size="sm">Tayyor</q-btn>
 
       
     </form>
@@ -21,7 +21,9 @@
 </template>
 
 <script setup>
+import { useApiStore } from "src/stores/index";
 import { ref, toRefs } from "vue";
+const store = useApiStore()
 let userName = ref("");
 let title = ref("");
 let editor = ref("");
@@ -72,12 +74,15 @@ const addQuestion = async ()=>{
           questions: id.value,
           
         }) 
-      }),
-      location.reload()
+      })
   } catch (error) {
     console.log(error.message);
   }
-      
+      title.value = ''
+      editor.value = ''
+      store.clicker = false
+
+      store.GetApiById(id.value)
     }
 
 
