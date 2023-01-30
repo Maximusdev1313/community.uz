@@ -3,20 +3,22 @@
     <article>
       <div class="row justify-between">
         <div class="title">Answers</div>
-          <q-btn
-            color="primary"
-            :label="store.clickerForComments ? 'bekor qilish': 'Fikr bildirish '"
-            :icon-right="store.clickerForComments ? 'cancel' : 'comment'"
-            @click="store.clickerForComments = !store.clickerForComments"
-            size="sm" />  
-          <!-- <q-btn color="primary" label="bekor qilish" icon-right="cancel" size="sm" @click=""/> -->
+        <q-btn
+          color="primary"
+          :label="store.clickerForComments ? 'bekor qilish' : 'Fikr bildirish '"
+          :icon-right="store.clickerForComments ? 'cancel' : 'comment'"
+          @click="store.clickerForComments = !store.clickerForComments"
+          size="sm"
+        />
+        <!-- <q-btn color="primary" label="bekor qilish" icon-right="cancel" size="sm" @click=""/> -->
       </div>
-<input-for-comments :id="route.params.id" v-if="store.clickerForComments "/>
-      <div v-for="comment in store.comments " :key="comment">
+      <input-for-comments
+        :id="route.params.id"
+        v-if="store.clickerForComments"
+      />
+      <div v-for="comment in store.comments" :key="comment">
         <div class="row justify-between no-wrap q-mt-md">
-          <main class="content" v-html="comment.comment">
-            <!-- {{ comment.comment }} -->
-          </main>
+          <main class="content" v-html="comment.comment"></main>
           <!-- <aside>
             <q-btn
               round
@@ -35,23 +37,22 @@
         </div>
         <div class="row justify-between q-mt-md parts">
           <address>{{ comment.user_name }}</address>
-          <time>{{ moment(comment.timestamp).format('lll') }}</time>
+          <time>{{ moment(comment.timestamp).format("lll") }}</time>
         </div>
-        <q-separator class="q-mt-md"/>
-
+        <q-separator class="q-mt-md" />
       </div>
     </article>
   </div>
 </template>
 <script setup>
-import {ref, } from 'vue'
-import { useRoute } from 'vue-router';
-import { useApiStore } from 'src/stores';
-import moment from 'moment';
-import inputForComments from './inputForComments.vue';
-  const store = useApiStore()
-  const route = useRoute()
-  let clicking = ref(false)
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { useApiStore } from "src/stores";
+import moment from "moment";
+import inputForComments from "./inputForComments.vue";
+const store = useApiStore();
+const route = useRoute();
+let clicking = ref(false);
 </script>
 <style scoped>
 .content {
