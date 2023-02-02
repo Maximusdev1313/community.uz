@@ -2,7 +2,7 @@
   <div class="container">
     <form class=" ">
       <div>
-        <q-input label="Ismingiz" class="q-py-sm" v-model="userName" />
+        <q-input label="Ismingiz" class="q-py-sm" v-model="userName" v-if="!store.storageName"/>
       </div>
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef" />
@@ -52,14 +52,28 @@ const date = new Date().getTime();
 const random = Math.floor(Math.random() * 10000);
 const special_id = random.toString() + date + random.toString();
 
+store.checkStorage()
+const checkingId = ref(null)
+const checkingName = ref(null)
 const addComment = async () => {
+  if(!store.storageId && !store.storageName){
+    localStorage.setItem('special_id', special_id)
+    localStorage.setItem('user_name', userName.value)
+    store.checkStorage()
+    checkingId.value = store.storageId
+    checkingName.value = store.storageName
+  }
+  else{
+    checkingId.value = store.storageId
+    checkingName.value = store.storageName
+  }
   try {
     await fetch("http://maxmaximusdev.pythonanywhere.com/comment/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        special_id: special_id,
-        user_name: userName.value,
+        special_id: checkingId.value,
+        user_name: checkingName.value,
         comment: editor.value,
         answers: id.value,
       }),
