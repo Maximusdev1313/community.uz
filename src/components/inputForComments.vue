@@ -7,9 +7,15 @@
       <div class="q-mt-md">
         <q-editor v-model="editor" @paste="onPaste" ref="editorRef" />
       </div>
-      <q-btn class="q-my-md" @click="addComment" color="primary" size="sm"
-        >Tayyor</q-btn
-      >
+      <q-btn
+        align="between"
+        class="q-my-md"
+        @click="addComment"
+        color="primary"
+        size="sm"
+        icon-right="check"
+        label="tayyor"
+        />
     </form>
     <q-separator></q-separator>
   </div>
@@ -20,7 +26,6 @@ import { useApiStore } from "src/stores/index";
 import { ref, toRefs } from "vue";
 const store = useApiStore();
 let userName = ref("");
-let title = ref("");
 let editor = ref("");
 let editorRef = ref(null);
 const props = defineProps({
