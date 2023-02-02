@@ -6,10 +6,12 @@ export const useApiStore = defineStore('store', {
   state: () => ({
     categoryApi: [],
     lists: [],
-    question: {},
+    question: [],
     comments:{},
     clicker: false,
-    clickerForComments: false
+    clickerForComments: false,
+    storageId: null,
+    storageName: null
   }),
 
   actions: {
@@ -29,7 +31,8 @@ export const useApiStore = defineStore('store', {
         const category = Fetch_Api.data
         console.log('from category', category);
         this.lists =  category.questions
-        
+        console.log(this.activities, 'act');
+
       } catch (error) {
         console.log( 'error', error.message);
 
@@ -47,13 +50,23 @@ export const useApiStore = defineStore('store', {
         console.log(error.message);
       }
 
-    }
+    },
+     checkStorage (){
+      this.storageId = localStorage.getItem('special_id')
+      this.storageName = localStorage.getItem('user_name')
+      console.log(this.storageId, this.storageName);
+     console.log(this.lists);
+     }
   },
   getters:{
      reverseLists: (state) =>{
-    
        return state.lists.reverse()
      },
+      activities(state){
+       return state.lists.filter((el)=>{
+        return el.special_id == state.storageId
+      })
+     }
    
    }, 
 
