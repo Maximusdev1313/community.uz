@@ -13,10 +13,13 @@
 <script setup>
 import InputForWriteMassage from 'src/components/inputForWriteMassage.vue';
 import QuestionList from 'src/components/questionList.vue';
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import {useApiStore} from 'src/stores/index'
 const store = useApiStore()
 store.GetCategoryApi()
+// store.activities()
+onMounted(()=>{
+  store.checkStorage()
 
-
+})
 </script>

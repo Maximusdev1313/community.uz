@@ -11,7 +11,7 @@
       />
     </div>
     <input-for-write-massage :id="route.params.id" v-if="store.clicker" />
-
+   
     <Suspense>
       <question-list :questions="store.reverseLists" :height="height" />
     </Suspense>
@@ -34,9 +34,11 @@ let list = ref(store.lists);
 onMounted(() => {
   store.GetApiById(route.params.id);
   store.GetCategoryApi();
+  store.checkStorage()
+
 });
 
-// watching changing of router and reloaded function
+// watching changing of router and reloading function
 
 watch(
   () => route.params.id,
