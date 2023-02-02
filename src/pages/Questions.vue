@@ -3,7 +3,7 @@
     <div class="container q-pt-md title row justify-between">
       Savollar ro'yxati
       <q-btn
-        color="primary"
+        :color="store.clicker ? 'red' : 'primary'"
         :label="store.clicker ? 'bekor qilish' : 'Savol berish '"
         :icon-right="store.clicker ? 'cancel' : 'comment'"
         @click="store.clicker = !store.clicker"
@@ -13,8 +13,15 @@
     <input-for-write-massage :id="route.params.id" v-if="store.clicker" />
    
     <Suspense>
-      <question-list :questions="store.reverseLists" :height="height" />
+      <question-list :questions="store.reverseLists"  />
     </Suspense>
+    <div class="flex justify-center items-center parts q-mt-xl" v-if="!store.reverseLists.length">
+      <div>
+        Savollar mavjud emas, birinchilardan bo'ling
+
+      </div>
+
+    </div>
   </div>
 </template>
 <script setup>

@@ -7,7 +7,7 @@ export const useApiStore = defineStore('store', {
     categoryApi: [],
     lists: [],
     question: [],
-    comments:{},
+    comments:[],
     clicker: false,
     clickerForComments: false,
     storageId: null,
@@ -19,7 +19,6 @@ export const useApiStore = defineStore('store', {
       try {
         const Fetch_Api = await axios.get('http://maxmaximusdev.pythonanywhere.com/category/')
         this.categoryApi = Fetch_Api.data
-        console.log('categoryApi', this.categoryApi.length);
       } catch (error) {
         console.log(error.message);
       }
@@ -29,9 +28,7 @@ export const useApiStore = defineStore('store', {
       try {
         const Fetch_Api = await axios.get(`http://maxmaximusdev.pythonanywhere.com/category/${id}`)
         const category = Fetch_Api.data
-        console.log('from category', category);
         this.lists =  category.questions
-        console.log(this.activities, 'act');
 
       } catch (error) {
         console.log( 'error', error.message);
@@ -43,9 +40,7 @@ export const useApiStore = defineStore('store', {
       try {
         const api = await axios.get(`http://maxmaximusdev.pythonanywhere.com/questions/${id}`)
         this.question = api.data
-        console.log('question',this.question);
         this.comments = this.question.answer 
-        console.log('comment',this.comments);
       } catch (error) {
         console.log(error.message);
       }
@@ -54,19 +49,18 @@ export const useApiStore = defineStore('store', {
      checkStorage (){
       this.storageId = localStorage.getItem('special_id')
       this.storageName = localStorage.getItem('user_name')
-      console.log(this.storageId, this.storageName);
-     console.log(this.lists);
      }
   },
   getters:{
      reverseLists: (state) =>{
        return state.lists.reverse()
      },
-      activities(state){
+      activities:(state)=>{
        return state.lists.filter((el)=>{
         return el.special_id == state.storageId
       })
-     }
+     },
+     
    
    }, 
 

@@ -77,7 +77,6 @@ const addQuestion = async () => {
     checkingName.value = store.storageName
   }
   
-  console.log(checkingId.value);
   try {
     await fetch("http://maxmaximusdev.pythonanywhere.com/questions/", {
       method: "POST",
@@ -93,8 +92,7 @@ const addQuestion = async () => {
   } catch (error) {
     console.log(error.message);
   }
-  // const b = localStorage.getItem('special_id')
-  // console.log(typeof b);
+
   title.value = "";
   editor.value = "";
   store.clicker = false;
