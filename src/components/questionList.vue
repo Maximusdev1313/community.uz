@@ -9,7 +9,6 @@
             </q-item-label>
             <q-item-label caption lines="2" v-html="q.question"></q-item-label>
           </q-item-section>
-
           <q-item-section side top>
             <q-item-label caption>{{
               moment(q.timestamp).format("lll")
@@ -56,9 +55,7 @@ const barStyle = {
 </script>
 
 <style scoped>
-/* div.q-scrollarea__content.absolute{
-  position: relative;
-} */
+
 
 .item-label {
   width: 200px;
