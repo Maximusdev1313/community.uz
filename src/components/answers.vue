@@ -4,7 +4,7 @@
       <div class="row justify-between">
         <div class="title">Javoblar</div>
         <q-btn
-          color="primary"
+          :color="store.clickerForComments ? 'red' : 'primary'"
           :label="store.clickerForComments ? 'bekor qilish' : 'Fikr bildirish '"
           :icon-right="store.clickerForComments ? 'cancel' : 'comment'"
           @click="store.clickerForComments = !store.clickerForComments"
