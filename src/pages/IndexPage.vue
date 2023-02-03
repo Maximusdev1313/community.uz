@@ -20,6 +20,7 @@ store.GetCategoryApi()
 // store.activities()
 onMounted(()=>{
   store.checkStorage()
-
+  // navigate to other pages
+  location.replace('/category/1')
 })
 </script>
