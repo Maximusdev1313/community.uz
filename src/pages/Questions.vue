@@ -28,7 +28,7 @@
 import inputForWriteMassage from "src/components/inputForWriteMassage.vue";
 import questionList from "src/components/questionList.vue";
 import { useApiStore } from "src/stores/index";
-import { ref, watch, onMounted, computed } from "vue";
+import { ref, watch, onBeforeMount, computed } from "vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
 const questionOpen = ref(false);
@@ -38,7 +38,7 @@ const store = useApiStore();
 store.GetCategoryApi();
 let list = ref(store.lists);
 // for getting list when user coming from links
-onMounted(() => {
+onBeforeMount(() => {
   store.GetApiById(route.params.id);
   store.GetCategoryApi();
   store.checkStorage()
