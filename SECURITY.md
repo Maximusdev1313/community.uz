@@ -2,8 +2,6 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -12,6 +10,6 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-##Notice!!!
+## Notice!!!
 
 Our developers are not responsible for your massages and comments
